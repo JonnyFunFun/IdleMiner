@@ -1,1 +1,35 @@
-Readme coming soon
+IdleMiner
+========
+
+What is IdleMiner?
+------------------
+
+IdleMiner is a simple little program written in C# that provides an 
+easy-to-configure wrapper for the poclbm Bitcoin miner.  It also has 
+a built-in activity monitor that will automatically start mining when 
+your PC has been inactive for a desired amount of time, and will stop 
+mining when it becomes active again.
+
+![IdleMiner](https://raw.github.com/JonnyFunFun/IdleMiner/master/screenshot.png)
+
+How do I use it?
+----------------
+
+Simply download the ZIP or 7z archive, extract it, and run _IdleMiner.exe_. 
+In the configuration window, put in the details for your pool, your username/password, 
+your desired work-size/vectors/etc.  In the bottom box, put down in plain 
+English what inactivity delay you wish to use - for example, _5 minutes_ or 
+_10 minutes 30 seconds_.  That's it!
+
+What's this "Advanced" tab?
+---------------------------
+
+Instead of running poclbm, you can specify an executable to run in its place. 
+From this tab, just select the desired program you want to run after the delay, 
+the arguments for it, and you're all set!
+
+I love it!  How can I help out?
+-------------------------------
+
+Pull requests for bug fixes and added features are certainly welcome.  
+Donations in bitcoins are welcome to _1D3zuM3Zg1bf7G7xeHd9Mh5j9gH3FgRv2x_

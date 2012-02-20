@@ -379,6 +379,7 @@ namespace IdleMiner
             this.Text = "IdleMiner";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
+            this.Shown += new System.EventHandler(MainFormShown    );
             this.notifyIconMenu.ResumeLayout(false);
             this.minerSettingsGroup.ResumeLayout(false);
             this.minerSettingsGroup.PerformLayout();

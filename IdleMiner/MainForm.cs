@@ -169,8 +169,6 @@ namespace IdleMiner
             addressInput.LostFocus += AddressInputCheckAndSave;
             delayInput.LostFocus += DelayInputParseAndSave;
             // Check to skip right to tray
-            if (Program.StartToTray)
-                Hide();
         }
 
         private void DeviceSelectionProcessChange(object sender, EventArgs eventArgs)
@@ -367,12 +365,17 @@ namespace IdleMiner
                     notifyIcon.ShowBalloonTip(5000, Resources.Minimized_Balloon_Title, Resources.Minimized_Balloon_Text,
                                               ToolTipIcon.Info);
                 e.Cancel = true;
+            } else
+            {
+                if (_miningProcess != null)
+                {
+                    _miningProcess.Kill();
+                    Thread.Sleep(1000);
+                    _miningProcess.Close();
+                }
+                Application.Exit();
             }
             SaveSettings();
-            _miningProcess.Kill();
-            Thread.Sleep(1000);
-            _miningProcess.Close();
-            Application.Exit();
         }
 
         private void NotifyIconBalloonTipClicked(object sender, System.EventArgs e)
@@ -429,6 +432,12 @@ namespace IdleMiner
             var hIcon = _trayBitmap.GetHicon();
             notifyIcon.Icon = Icon.FromHandle(hIcon);
             DestroyIcon(hIcon);
+        }
+
+        private void MainFormShown(object sender, System.EventArgs e)
+        {
+            if (Program.StartToTray)
+                this.Hide();
         }
     }
 }
